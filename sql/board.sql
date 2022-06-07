@@ -10,3 +10,13 @@ CREATE TABLE t_board(
 
 CREATE SEQUENCE seq_t_board_no;
 
+select * from T_BOARD;
+
+INSERT INTO T_BOARD(NO, title, writer, content) 
+VALUES(SEQ_T_BOARD_NO.NEXTVAL,'제목입니다','홍길동','내용입니다');
+
+INSERT INTO T_BOARD(NO, title, writer, content) 
+VALUES(SEQ_T_BOARD_NO.NEXTVAL,'제목입니다2','홍길동','내용입니다2');
+
+commit;
+

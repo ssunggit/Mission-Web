@@ -61,7 +61,8 @@
 			%>
 				<tr>
 					<td><%= no %></td>
-					<td><%= title %></td>
+					<!-- JSP를 먼저 해석한 후 웹브라우저가 해석하기 때문에 no를 숫자로 인식하는 것이다 -->
+					<td><a href="detail.jsp?no=<%= no %>"><%= title %></td>
 					<td><%= writer %></td>
 					<td><%= regDate %></td>
 				</tr>
