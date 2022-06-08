@@ -13,7 +13,7 @@
 	
 	Connection conn = new ConnectionFactory().getConnetion();
 	StringBuilder sql = new StringBuilder();
-	sql.append("select no, title, writer, content ");
+	sql.append("select * ");
 	sql.append(" from t_board ");
 	sql.append(" where no =" + no);
 		
@@ -42,21 +42,47 @@
 	<hr>
 	<h2>게시판 상세</h2>
 	<hr>	
+	<table border="1" style="width:80%">
 <% 
 	while(rs.next()){
 			int noPrint = rs.getInt("no");
 			String title = rs.getString("title");
+			String writer = rs.getString("writer");
 			String content = rs.getString("content");
+			int view_cnt = rs.getInt("view_cnt");
+			String reg_date = rs.getString("reg_date");
 			
 	%>
-		<%= noPrint %>
-		<%= title %>
-		<%= content %>
+	<tr>
+		<td>번호</td>
+		<td><%= noPrint %></td>
+	</tr>
+	<tr>
+		<td>날짜</td>
+		<td><%= reg_date %></td>
+	</tr>
+	<tr>
+		<td>글쓴이</td>
+		<td><%= writer %></td>
+	</tr>
+	<tr>
+		<td>제목</td>
+		<td><%= title %></td>
+	</tr>
+	<tr>
+		<td>내용</td>
+		<td><%= content %></td>
+	</tr>
+	<tr>
+		<td>조회수</td>
+		<td><%= view_cnt %></td>
+	</tr>
+	
 	<% 
 	} 
 	%> 
 	
-	 
+	</table> 
 	</div>
 </body>
 </html>
