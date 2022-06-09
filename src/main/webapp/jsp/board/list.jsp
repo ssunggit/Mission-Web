@@ -72,7 +72,11 @@
 						겟방식으로 넘겨줌 
 						? : 클라이언트가 자신의 정보를 서버에 담을 때 ? 뒤로 쓴다
 					-->
-					<a href="detail.jsp?no=${board.no}">${ board.title }</a>
+					
+					<!-- 보안을 위해 링크를 el로 적지 않는다  -->
+					<a href="detail.jsp?no=${board.no}">
+						<c:out value="${ board.title }"/> 
+					</a>
 				</td>
 				<td>${ board.writer }</td>
 				<td>${ board.regDate }</td>
