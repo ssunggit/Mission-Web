@@ -6,6 +6,7 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	// http://localhost:9999/Mission-Web/jsp/board/detail.jsp?no=21
 	
@@ -31,11 +32,21 @@
 <title>게시판 상세</title>
 <script src="/Mission-Web/resource/js/jquery-3.6.0.min.js"></script>
 <script>
-	$(document).ready(function() {
-		$('#Btn').click(function() {
-			location.href= 'list.jsp'
-		})
-	})	
+	function doAction(type) {
+		switch(type) {
+		case 'U' : 
+			location.href = "update.jsp?no=${param.no}"
+			break;
+		case 'D' : 
+			if(confirm('삭제하시겠습니까?')){
+				location.href = "delete.jsp?no=${param.no}"
+			}
+			break;
+		case 'L' :
+			location.href = "list.jsp"
+			break;
+		}
+	}
 </script>
 </head>
 <body>
@@ -51,7 +62,7 @@
 		</tr>
 		<tr>
 			<th width="25%">제목</th>
-			<td>${ board.title }</td>
+			<td><c:out value="${ board.title }"/> </td>
 		</tr>
 		<tr>
 			<th width="25%">작성자</th>
@@ -59,7 +70,7 @@
 		</tr>
 		<tr>
 			<th width="25%">내용</th>
-			<td>${ board.content }</td>
+			<td><c:out value="${ board.content }"/> </td>
 		</tr>
 		<tr>
 			<th width="25%">조회수</th>
@@ -69,7 +80,11 @@
 			<th width="25%">등록일</th>
 			<td>${ board.regDate }</td>
 		</tr>
-	</table> 
+	</table>
+	<br>
+	<button onclick="doAction('U')">수  정</button>&nbsp;&nbsp;
+	<button onclick="doAction('D')">삭  제</button>&nbsp;&nbsp;
+	<button onclick="doAction('L')">목  록</button>&nbsp;&nbsp;
 	</div>
 </body>
 </html>
