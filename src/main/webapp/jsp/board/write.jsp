@@ -1,3 +1,5 @@
+<%@page import="kr.ac.kopo.board.vo.BoardVO"%>
+<%@page import="kr.ac.kopo.board.dao.BoardDAO"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="kr.ac.kopo.util.ConnectionFactory"%>
 <%@page import="java.sql.Connection"%>
@@ -20,22 +22,14 @@
     //System.out.println("title"+title);
     //System.out.println("writer"+writer);
     //System.out.println("content"+content);
+    BoardVO board = new BoardVO();
+    board.setTitle(title);
+    board.setWriter(writer);
+    board.setContent(content);  
     
-    Connection conn = new ConnectionFactory().getConnetion();
-    
-	StringBuilder sql = new StringBuilder();
-	
-	sql.append("insert into t_board(no, title, writer, content) ");
-	sql.append(" values(seq_t_board_no.nextval, ?, ?, ?) ");
-	
-	
-	PreparedStatement pstmt = conn.prepareStatement(sql.toString());
-	
-	pstmt.setString(1, title);
-	pstmt.setString(2, writer);
-	pstmt.setString(3, content);
-	
-	pstmt.executeUpdate();
+    BoardDAO dao = new BoardDAO();
+    // vo를 파라미터로 넘긴다
+    dao.insertBoard(board);
 		 
 %>
 
