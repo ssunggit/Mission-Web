@@ -46,18 +46,13 @@
 				<td><c:out value="${ list.id }"/></td>
 				<td><c:out value="${ list.name }"/></td>
 				<td>
-					<c:out value="${ list.emailId }"/>
-					@
-					<c:out value="${ list.emailDomain }"/>
+					<c:out value="${ list.emailId }@${ list.emailDomain }"/>
 				</td>
 				<td>
-					<c:out value="${ list.tel1 }"/>			
-					<c:out value="${ list.tel2 }"/>			
-					<c:out value="${ list.tel3 }"/>
+					<c:out value="${ list.tel1 }-${ list.tel2 }-${ list.tel3 }"/>
 				</td>					
 				<td>
-					<c:out value="${ list.basicAddr }"/>		
-					<c:out value="${ list.detailAddr }"/>
+					<c:out value="${ list.basicAddr } ${ list.detailAddr }"/>
 				</td>				
 				<td><c:out value="${ list.regDate }"></c:out></td>			
 			</tr>	
