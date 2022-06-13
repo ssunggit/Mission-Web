@@ -37,6 +37,8 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 목록</title>
+<link rel="stylesheet" href="/Mission-Web/resources/css/layout.css">
+<link rel="stylesheet" href="/Mission-Web/resources/css/table.css">
 <script src="/Mission-Web/resource/js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
@@ -47,12 +49,17 @@
 </script>
 </head>
 <body>
-	<div align="center">
+	<header>
+		<jsp:include page="/jsp/include/topMenu.jsp" />
+	</header>
+	
+	<section>
+		<div align="center">
 		<hr>
 		<h2>전체게시글 조회</h2>
 		<hr>
 		<br>
-		<table border="1" style="width:80%">
+		<table border="1" style="width:100%">
 		<tr>
 			<th width="7%">번호</th>
 			<th>제목</th>
@@ -64,8 +71,8 @@
 		<c:set var="board" value="${list[1]"}/> 
 		<c:set var="board" value="${list[2]"}/> 
 		--%>
-		<c:forEach items="${ list }" var="board">
-			<tr>
+		<c:forEach items="${ list }" var="board" varStatus="loop">
+			<tr <c:if test="${ loop.count mod 2 eq 0 }">class="even"</c:if>>
 				<td>
 					<c:out value="${ board.no }"/> 
 				</td>
@@ -91,5 +98,11 @@
 		<br>
 		<button id="addBtn">새글등록</button>
 	</div>
+	</section>
+	
+	<footer>
+	<!-- xml include forward 에서의 루트는 context-path 뒤 : http://localhost:9999/Mission-Web/ 뒤 -->
+		<%@ include file="/jsp/include/footer.jsp" %>
+	</footer>
 </body>
 </html>
