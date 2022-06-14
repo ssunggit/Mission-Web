@@ -12,7 +12,7 @@ public class MemberVO {
 	private String post;
 	private String basicAddr;
 	private String detailAddr;
-	private String type;
+	private String type;	// "S" : 관리자, "U" : 일반사용자
 	private String regDate;
 	
 	public MemberVO() {
@@ -21,6 +21,12 @@ public class MemberVO {
 	}
 	
 	
+	public MemberVO(String id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	public MemberVO(String id, String name, String password, String emailId, String emailDomain, String tel1,
 			String tel2, String tel3, String post, String basicAddr, String detailAddr, String type, String regDate) {
 		super();

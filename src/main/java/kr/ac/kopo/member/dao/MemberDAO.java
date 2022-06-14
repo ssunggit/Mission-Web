@@ -70,4 +70,41 @@ public class MemberDAO {
 		
 		return memberList;
 	}
+
+	public MemberVO login(MemberVO memberVO){
+		StringBuilder sql = new StringBuilder();
+		sql.append("select id, name, password, type ");
+		sql.append(" from t_member ");
+		sql.append(" where id = ? and password = ? ");
+		
+		try(
+			Connection conn = new ConnectionFactory().getConnetion();
+			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+		){
+			pstmt.setString(1, memberVO.getId());
+			pstmt.setString(2, memberVO.getPassword());
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			// id 가 기본키이기 때문에 나올 수 있는 레코드가 0~1개
+			if(rs.next()) {
+				MemberVO userVO = new MemberVO();
+				userVO.setId(rs.getString("id"));
+				userVO.setPassword(rs.getString("password"));
+				userVO.setName(rs.getString("name"));
+				userVO.setType(rs.getString("type"));
+				
+				return userVO;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// 로그인 실패할 경우 null 리턴
+		return null;
+	}
+	
+	
+
 }

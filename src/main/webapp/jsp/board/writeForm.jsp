@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>새글등록폼</title>
-<script src="/Mission-Web/resource/js/jquery-3.6.0.min.js"></script>
+<script src="/Mission-Web/resources/js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$('#ListBtn').click(function() {

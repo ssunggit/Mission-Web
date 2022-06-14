@@ -30,7 +30,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 상세</title>
-<script src="/Mission-Web/resource/js/jquery-3.6.0.min.js"></script>
+<script src="/Mission-Web/resources/js/jquery-3.6.0.min.js"></script>
 <script>
 	function doAction(type) {
 		switch(type) {
