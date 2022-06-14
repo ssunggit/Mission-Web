@@ -84,7 +84,7 @@
 					
 					<!-- 보안을 위해 링크를 el로 적지 않는다  -->
 					<!--  화면 출력을 위해 el 이 아닌 out 태그로 적어야한다 -->
-					<a href="detail.jsp?no=${board.no}">
+					<a href="updateViewCnt.jsp?no=${board.no}">
 						<c:out value="${ board.title }"/> 
 					</a>
 				</td>
