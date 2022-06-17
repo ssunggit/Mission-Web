@@ -22,7 +22,7 @@ public class MemberDAO {
 		sql.append(" from t_member ");
 		
 		try(
-			 Connection conn = new ConnectionFactory().getConnetion();
+			 Connection conn = new ConnectionFactory().getConnection();
 			 PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 	
 		) {
@@ -78,7 +78,7 @@ public class MemberDAO {
 		sql.append(" where id = ? and password = ? ");
 		
 		try(
-			Connection conn = new ConnectionFactory().getConnetion();
+			Connection conn = new ConnectionFactory().getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 		){
 			pstmt.setString(1, memberVO.getId());

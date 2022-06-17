@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 // 1-2단계
 public class ConnectionFactory {
 //	try-catch 빼고 throws로도 가능
-	public Connection getConnetion() {
+	public Connection getConnection() {
 		Connection conn = null;
 		try {			
 			Class.forName("oracle.jdbc.driver.OracleDriver");	

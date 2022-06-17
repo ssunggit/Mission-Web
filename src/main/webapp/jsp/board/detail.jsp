@@ -1,3 +1,5 @@
+<%@page import="kr.ac.kopo.board.vo.BoardFileVO"%>
+<%@page import="java.util.List"%>
 <%@page import="kr.ac.kopo.board.vo.BoardVO"%>
 <%@page import="kr.ac.kopo.board.dao.BoardDAO"%>
 <%@page import="java.sql.ResultSet"%>
@@ -18,11 +20,19 @@
 	*/
 	
 	int no = Integer.parseInt(request.getParameter("no"));
+
 	BoardDAO dao = new BoardDAO();
-	BoardVO board = dao.selectByNo(no);
+	
+	// 1. 게시물 조회
+		BoardVO board =  dao.selectByNo(no);
+		
+	// 2. 첨부파일 조회
+	List<BoardFileVO> fileList = dao.selectFileByNo(no);
 	
 	// 화면에 출력시키기 위해 공유영역에 저장
+	// 3. 공유영역에 등록
 	pageContext.setAttribute("board", board);
+	pageContext.setAttribute("fileList", fileList);
 %>
 
 <!DOCTYPE html>
@@ -30,8 +40,14 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 상세</title>
+<link rel="stylesheet" href="/Mission-Web/resources/css/layout.css">
+<link rel="stylesheet" href="/Mission-Web/resources/css/table.css">
 <script src="/Mission-Web/resources/js/jquery-3.6.0.min.js"></script>
 <script>
+	if(${userVO} == ''){
+		location.href = '/Mission-Web/jsp/login/login.jsp'
+	}
+
 	function doAction(type) {
 		switch(type) {
 		case 'U' : 
@@ -50,6 +66,10 @@
 </script>
 </head>
 <body>
+<header>
+		<jsp:include page="/jsp/include/topMenu.jsp" />
+	</header>
+	<section>
 	<div align="center">
 	<hr>
 	<h2>게시판 상세</h2>
@@ -80,11 +100,28 @@
 			<th width="25%">등록일</th>
 			<td>${ board.regDate }</td>
 		</tr>
+		<tr>
+			<th>첨부파일</th>
+			<!-- 파일이 서버에 있다  -->
+			<td>
+				<c:forEach items="${ fileList }" var="fileVO">
+					<a href="/Mission-Web/upload/${ fileVO.fileSaveName }">
+						${ fileVO.fileOriName }
+					</a> 
+					(${ fileVO.fileSize }bytes)
+					<br>
+				</c:forEach>
+			</td>
+		</tr>
 	</table>
 	<br>
 	<button onclick="doAction('U')">수  정</button>&nbsp;&nbsp;
 	<button onclick="doAction('D')">삭  제</button>&nbsp;&nbsp;
 	<button onclick="doAction('L')">목  록</button>&nbsp;&nbsp;
 	</div>
+	</section>
+	<footer>
+		<%@ include file="/jsp/include/footer.jsp" %>
+	</footer>
 </body>
 </html>

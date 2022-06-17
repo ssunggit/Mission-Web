@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>새글등록폼</title>
+<link rel="stylesheet" href="/Mission-Web/resources/css/layout.css">
+<link rel="stylesheet" href="/Mission-Web/resources/css/table.css">
 <script src="/Mission-Web/resources/js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
@@ -22,23 +24,53 @@
 			f.title.focus()
 			return false	
 		}
-		
+		/*
 		if(f.writer.value == '') {
 			alert('작성자를 입력하세요')
 			f.writer.focus()
 			return false
 		}
-		
+		*/
 		if(f.content.value == '') {
 			alert('내용을 입력하세요')
 			f.content.focus()
 			return false
 		}
+		
+		// 첨부파일 확장자 체크
+		if(checkExt(f.attachfile1)){
+			return false	
+		}
+		
+		if(checkExt(f.attachfile2)){
+			return false	
+		}
+		
 		return true
+	}
+	
+	
+	function checkExt(obj) {
+		let forbidName = ['exe', 'java', 'class', 'js', 'jsp']
+		let fileName = obj.value
+		let ext = fileName.substring(fileName.lastIndexOf('.') + 1)
+		
+		for(let i = 0; i < forbidName.length; i++) {
+			if(forbidName[i] == ext) {
+				alert('[' + ext + '] 확장자는 파일 업로드 정책에 위배됩니다')
+				return true
+			}
+		}
+		
+		return false
 	}
 </script>
 </head>
 <body>
+<header>
+		<jsp:include page="/jsp/include/topMenu.jsp" />
+	</header>
+	<section>
 	<div align="center">
 		<hr>
 		<h2>새글 등록폼</h2>
@@ -47,7 +79,12 @@
 		<!-- onsubmit : action이 가르키는 url로 이동하게 할지 말지를 결정하는 속성 -->
 		<!-- return false 이면 액션이 가르키는 url로 이동하지 않는다. -->
 		<!-- form 태그의 name 속성으로 form 태그 안 태그들을 제어할 수 있다. -->
-		<form action="write.jsp" method="post" name="writeForm" onsubmit="return checkForm()">
+		<form action="write.jsp" method="post" name="writeForm" onsubmit="return checkForm()" enctype="multipart/form-data">
+			<!-- 
+			type="hidden" : 내가 직접 입력하지 않았지만 form태그를 통해 전달, form 태그 안에서만 사용가능하다 
+			위치는 form 태그 안에서만 있으면 된다.
+			-->
+			<input type="hidden" name="writer" value="${ userVO.id }">
 			<table border="1" style="width:80%">
 				<tr>
 					<th width="25%">제목</th>
@@ -56,12 +93,22 @@
 				</tr>
 				<tr>
 					<th width="25%">작성자</th>
-					<td><input type="text" name="writer"></td>
+					<td>
+						${ userVO.id }
+						<%-- <input type="text" name="writer" value="${ userVO.id }" readonly> --%>
+					</td>
 				</tr>
 				<tr>
 					<th width="25%">내용</th>
 					<td>
 						<textarea rows="5" cols="80" name="content"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th>첨부파일</th>
+					<td>
+						<input type="file" name="attachfile1"><br>
+						<input type="file" name="attachfile2">
 					</td>
 				</tr>
 			</table>
@@ -70,5 +117,9 @@
 			<button type="button" id="ListBtn">목록</button>
 		</form>
 	</div>
+	</section>
+	<footer>
+		<%@ include file="/jsp/include/footer.jsp" %>
+	</footer>
 </body>
 </html>

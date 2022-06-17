@@ -39,13 +39,31 @@
 <title>게시물 목록</title>
 <link rel="stylesheet" href="/Mission-Web/resources/css/layout.css">
 <link rel="stylesheet" href="/Mission-Web/resources/css/table.css">
-<script src="/Mission-Web/resource/js/jquery-3.6.0.min.js"></script>
+<script src="/Mission-Web/resources/js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$('#addBtn').click(function() {
-			location.href= 'writeForm.jsp'
+			location.href = 'writeForm.jsp'
 		})
-	})	
+	})
+
+	function checkLogin(boardNo) {
+		/* el과 jstl중에서는 jstl(백단코드)의 해석이 먼저된다  */
+		/* js에서 c:set태그를 실행하려는것은 안된다 */
+		<c:choose>
+			<c:when test="${ empty userVO }">	
+				if(confirm('로그인 후 사용가능합니다\n로그인 페이지로 이동할까요?')){
+					location.href = '/Mission-Web/jsp/login/login.jsp'
+				}
+			</c:when>	
+			
+			<c:otherwise>
+				location.href = 'detail.jsp?no=' + boardNo
+			</c:otherwise>
+		</c:choose>
+	}
+</script>
+<script>
 </script>
 </head>
 <body>
@@ -84,7 +102,14 @@
 					
 					<!-- 보안을 위해 링크를 el로 적지 않는다  -->
 					<!--  화면 출력을 위해 el 이 아닌 out 태그로 적어야한다 -->
+					<%-- 
 					<a href="updateViewCnt.jsp?no=${board.no}">
+						<c:out value="${ board.title }"/> 
+					</a>
+					 --%>
+					 
+					 <!-- href javascript를 실행하겠다  -->
+					 <a href="javascript:checkLogin(${ board.no })">
 						<c:out value="${ board.title }"/> 
 					</a>
 				</td>
