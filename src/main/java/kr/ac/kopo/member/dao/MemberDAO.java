@@ -9,8 +9,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.ac.kopo.board.vo.BoardVO;
 import kr.ac.kopo.member.vo.MemberVO;
 import kr.ac.kopo.util.ConnectionFactory;
+import kr.ac.kopo.util.JDBCClose;
 
 public class MemberDAO {
 	
@@ -103,6 +105,43 @@ public class MemberDAO {
 		
 		// 로그인 실패할 경우 null 리턴
 		return null;
+	}
+	
+	
+	// 회원가입메소드
+	public void addMember(MemberVO member) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = new ConnectionFactory().getConnection();
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("insert into t_member(id, name, password, email_id, email_domain, tel1, tel2, tel3, post, basic_addr, detail_addr) ");
+			sql.append(" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
+			pstmt = conn.prepareStatement(sql.toString());
+			
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getName());
+			pstmt.setString(3, member.getPassword());
+			pstmt.setString(4, member.getEmailId());
+			pstmt.setString(5, member.getEmailDomain());
+			pstmt.setString(6, member.getTel1());
+			pstmt.setString(7, member.getTel2());
+			pstmt.setString(8, member.getTel3());
+			pstmt.setString(9, member.getPost());
+			pstmt.setString(10, member.getBasicAddr());
+			pstmt.setString(11, member.getDetailAddr());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCClose.close(pstmt, conn);
+		}
+		
 	}
 	
 	
