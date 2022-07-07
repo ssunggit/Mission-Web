@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
 <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -30,7 +33,6 @@
 <meta charset="UTF-8">
 <title>새글등록폼</title>
 <link rel="stylesheet" href="/Mission-Web/resources/css/layout.css">
-<link rel="stylesheet" href="/Mission-Web/resources/css/table.css">
 <script src="/Mission-Web/resources/js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
@@ -109,7 +111,7 @@
 			위치는 form 태그 안에서만 있으면 된다.
 			-->
 			<input type="hidden" name="writer" value="${ userVO.id }">
-			<table border="1" style="width:80%">
+			<table class="table">
 				<tr>
 					<th width="25%">제목</th>
 																	<!-- 속성과 값이 같을 경우에는 속성명만 기재할 수 있다 -->

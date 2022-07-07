@@ -101,7 +101,7 @@
 		<h2>전체게시글 조회</h2>
 		<hr>
 		<br>
-		<table class="table table-striped">
+		<table class="table">
 		<tr>
 			<th width="7%">번호</th>
 			<th>제목</th>
@@ -146,7 +146,7 @@
 		</table>
 		<br>
 		<c:if test="${ not empty userVO }">
-			<button id="addBtn">새글등록</button>
+			<button id="addBtn" class="btn btn-outline-dark">새글등록</button>
 		</c:if>
 	</div>
 	</section>

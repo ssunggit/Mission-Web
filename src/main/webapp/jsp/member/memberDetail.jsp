@@ -25,7 +25,11 @@
 
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
+  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <meta content="" name="description">
@@ -51,7 +55,7 @@
   <link href="/Mission-Web/assets/css/main.css" rel="stylesheet">
 <title>게시판 상세</title>
 <link rel="stylesheet" href="/Mission-Web/resources/css/layout.css">
-<link rel="stylesheet" href="/Mission-Web/resources/css/table.css">
+
 <script src="/Mission-Web/resources/js/jquery-3.6.0.min.js"></script>
 <script>
 	if(${userVO} == ''){
@@ -84,7 +88,7 @@
 	<hr>
 	<h2>게시판 상세</h2>
 	<hr>	
-	<table border="1" style="width:80%">
+	<table class="table">
 		<tr>
 			<th width="25%">번호</th>
 				<!--    .은 getter 메소드 -->

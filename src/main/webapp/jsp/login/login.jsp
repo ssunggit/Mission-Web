@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -30,7 +33,6 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" href="/Mission-Web/resources/css/layout.css">
-<link rel="stylesheet" href="/Mission-Web/resources/css/table.css">
 <script src="/Mission-Web/resources/js/myJS.js"></script>
 <script>
 /* 
@@ -85,7 +87,7 @@
 			<hr>
 			<br>
 			<form action="loginProcess.jsp" method="post" onsubmit="return checkForm()" name="loginForm" >
-				<table style="width: 40%">
+				<table class="table">
 					<tr>
 						<th>ID</th>
 						<td><input type="text" name="id"></td>
@@ -96,7 +98,7 @@
 					</tr>
 				</table>
 				<br>
-				<input type="submit" value="로그인">
+				<input type="submit" value="로그인" class="btn btn-outline-dark">
 			</form>
 		</div>
 	</section>

@@ -62,7 +62,7 @@
 		<h2>회원 리스트</h2>
 		<hr>
 		<br>
-		<table class="table table-striped">
+		<table class="table">
 			<tr>
 				<th>ID</th>
 				<th>이름</th>
@@ -89,7 +89,7 @@
 		</c:forEach>	
 		</table>
 		<br>
-		<button id="addMemberBtn">새로운 회원 등록</button>
+		<button id="addMemberBtn" class="btn btn-outline-dark">새로운 회원 등록</button>
 	</div>
 	</section>
 	<footer id="footer" class="footer">

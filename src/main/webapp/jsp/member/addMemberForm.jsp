@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8">
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	
+  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <meta content="" name="description">
@@ -29,7 +33,7 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" href="/Mission-Web/resources/css/layout.css">
-<link rel="stylesheet" href="/Mission-Web/resources/css/table.css">
+
 <script src="/Mission-Web/resources/js/jquery-3.6.0.min.js"></script>
 <script>
 /* 	$(document).ready(function() {
@@ -50,41 +54,47 @@
 		<h2>회원가입</h2>
 		<hr>
 		<br>
-		<div>
-			<form action="addMember.jsp" method="post">
-				<span>id</span>
-				<input type="text" name="id" size="75">
-				<br>
-				
-				<span>비밀번호</span>
-				<input type="password" name="password" size="75">
-				<br>
-				
-				<span>이름</span>
-				<input type="text" name="name" size="75">
-				<br>
-				
-				<span>이메일</span>
-				<input type="text" name="emailId" size="30">&nbsp;@
-				<input type="text" name="emailDomain" size="35">
-				<br>
-				
-				<span>전화번호</span>
+		<form action="addMember.jsp" method="post">
+		<table class="table">
+			<tr>
+				<th>id</th>
+				<td><input type="text" name="id" size="75"></td>
+			</tr>
+			<tr>	
+				<th>비밀번호</th>
+				<td><input type="password" name="password" size="75"></td>
+			</tr>
+			<tr>	
+				<th>이름</th>
+				<td><input type="text" name="name" size="75"></td>
+			</tr>
+			<tr>	
+				<th>이메일</th>
+				<td><input type="text" name="emailId" size="30">&nbsp;@
+				<input type="text" name="emailDomain" size="35"></td>
+			</tr>
+			<tr>	
+				<th>전화번호</th>
+				<td>
 				<input type="text" name="tel1" size="25">&nbsp;-
 				<input type="text" name="tel2" size="25">&nbsp;-
 				<input type="text" name="tel3" size="25">
-				<br>
-				
-				<span>우편번호</span>
+				</td>
+			</tr>
+			<tr>	
+				<th>우편번호</th>
+				<td>
 				<input type="text" name="post" size="75">
-				<br>
-				
-				<span>주소</span>
+				</td>
+			</tr>
+			<tr>	
+				<th>주소</th>
+				<td>
 				<input type="text" name="basicAddr" size="35">
-				<input type="text" name="detailAddr" size="30">
-				<br>
-				
-				<input type="submit" value="회원가입">
+				<input type="text" name="detailAddr" size="30"></td>
+			</tr>				
+			</table>
+			<input type="submit" value="회원가입" class="btn btn-outline-dark">
 			</form>
 		</div>
 	</div>
